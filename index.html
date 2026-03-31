@@ -3,60 +3,633 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre Mí - Desarrollador Odoo</title>
+    <title>Mario A. Millet - Desarrollador Full Stack & Odoo</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            box-sizing: border-box;
         }
+
+        :root {
+            --primary: #00d9ff;
+            --primary-dark: #0099cc;
+            --bg-dark: #0a0e27;
+            --bg-card: #1a1f3a;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b8c1;
+            --border: #2a3f5f;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #0f1429 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header / Navegación */
         header {
-            background: #35424a;
-            color: #ffffff;
-            padding: 20px 0;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, #00a8cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 80vh;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero .highlight {
+            background: linear-gradient(135deg, var(--primary) 0%, #00a8cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: 2px solid var(--primary);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 217, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 217, 255, 0.1);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Secciones */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid var(--primary);
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 217, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .about-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, #00a8cc 100%);
+            padding: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .avatar-inner {
+            width: 100%;
+            height: 100%;
+            background: var(--bg-card);
+            border-radius: 17px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+
+        /* Experience */
+        .experience-timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 2px solid var(--bg-dark);
+            box-shadow: 0 0 0 3px var(--primary);
+        }
+
+        .timeline-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: rgba(0, 217, 255, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .project-link:hover {
+            gap: 1rem;
+        }
+
+        /* Contact */
+        .contact-section {
             text-align: center;
         }
-        section {
-            padding: 20px;
-            margin: 20px;
-            background: #ffffff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
-        h1, h2 {
-            color: #35424a;
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
         }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover .contact-icon {
+            background: rgba(0, 217, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .contact-item a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Footer */
         footer {
             text-align: center;
-            padding: 10px;
-            background: #35424a;
-            color: #ffffff;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            padding: 2rem;
+            background: rgba(10, 14, 39, 0.95);
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .avatar {
+                width: 250px;
+                height: 250px;
+            }
+
+            .avatar-inner {
+                font-size: 4rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Hola, soy un Desarrollador Odoo</h1>
+    <nav>
+        <a href="#home" class="logo">&lt;Mario /&gt;</a>
+        <ul>
+            <li><a href="#about">Acerca de</a></li>
+            <li><a href="#experience">Experiencia</a></li>
+            <li><a href="#projects">Proyectos</a></li>
+            <li><a href="#contact">Contacto</a></li>
+        </ul>
+    </nav>
 </header>
 
-<section>
-    <h2>Acerca de Mí</h2>
-    <p>Mi nombre es Mario A. Millet y soy desarrollador especializado en Odoo. He estudiado Cibernética, lo que me ha permitido tener una sólida base en matemáticas y programación.</p>
-    
-    <h2>Experiencia en Odoo</h2>
-    <p>Trabajo con las versiones de Odoo 14, 15, 16 y 17, lo que me permite ofrecer soluciones eficientes y adaptadas a las necesidades de mis clientes. Estoy familiarizado con la personalización de módulos, desarrollo de nuevas características y la integración de Odoo con otras herramientas.</p>
+<section id="home" class="hero">
+    <h1>Hola, soy <span class="highlight">Mario</span></h1>
+    <p>Desarrollador Full Stack especializado en <strong>Odoo</strong>, <strong>Next.js</strong>, <strong>Node.js</strong> y arquitecturas escalables. Creo soluciones robustas y eficientes para empresas modernas.</p>
+    <div class="cta-buttons">
+        <a href="#contact" class="btn btn-primary">Ponte en contacto</a>
+        <a href="#projects" class="btn btn-secondary">Ver proyectos</a>
+    </div>
+</section>
 
-    <h2>Contacto</h2>
-    <p>Puedes contactarme a través de mi correo electrónico: <a href="mailto:mariomillet2b@gmail.com">mariomillet2b@gmail.com</a></p>
+<section id="about">
+    <h2>Acerca de Mí</h2>
+    <div class="about-content">
+        <div class="about-text">
+            <h3>Mi formación y experiencia</h3>
+            <p>Mi nombre es Mario A. Millet, un desarrollador con base sólida en <strong>Cibernética</strong> que me ha dado perspectiva en matemáticas, lógica y programación de sistemas complejos.</p>
+            <p>Soy especialista en <strong>Odoo</strong> con experiencia en versiones 14, 15, 16 y 17. He desarrollado módulos personalizados, integraciones complejas y soluciones empresariales que mejoran procesos operativos.</p>
+            <p>Además, trabajo con tecnologías modernas como <strong>Next.js</strong>, <strong>Node.js</strong>, <strong>PostgreSQL</strong> y <strong>Docker</strong>, siempre enfocado en crear arquitecturas escalables y mantenibles.</p>
+
+            <h3 style="margin-top: 2rem;">Habilidades principales</h3>
+            <div class="skills-grid">
+                <div class="skill-tag">Odoo 14-17</div>
+                <div class="skill-tag">Python</div>
+                <div class="skill-tag">JavaScript</div>
+                <div class="skill-tag">Next.js</div>
+                <div class="skill-tag">Node.js</div>
+                <div class="skill-tag">PostgreSQL</div>
+                <div class="skill-tag">Docker</div>
+                <div class="skill-tag">API REST</div>
+            </div>
+        </div>
+        <div class="about-image">
+            <div class="avatar">
+                <div class="avatar-inner">💻</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="experience">
+    <h2>Experiencia</h2>
+    <div class="experience-timeline">
+        <div class="timeline-item">
+            <h3>Desarrollador Full Stack</h3>
+            <div class="date">Explorantis • Presente</div>
+            <p>Liderando el desarrollo de múltiples proyectos: Hipersitio (plataforma de templates), sistemas de autenticación con Logto, y aplicaciones móviles de gestión de inventario usando arquitecturas modernas con Next.js, NestJS y PostgreSQL.</p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Especialista en Odoo</h3>
+            <div class="date">Freelance • 2020 - Presente</div>
+            <p>Desarrollo de módulos personalizados, configuración de sistemas ERP, integraciones con terceros y consultoría empresarial. He trabajado con pequeñas y medianas empresas en la implementación de soluciones Odoo adaptadas a sus necesidades específicas.</p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Educación en Cibernética</h3>
+            <div class="date">Estudios formales</div>
+            <p>Formación académica en Cibernética que me ha proporcionado una base sólida en matemáticas, teoría de sistemas, programación y análisis de procesos complejos.</p>
+        </div>
+    </div>
+</section>
+
+<section id="projects">
+    <h2>Proyectos Destacados</h2>
+    <div class="projects-grid">
+        <div class="project-card">
+            <h3>Hipersitio</h3>
+            <div class="project-tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">NestJS</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Docker</span>
+            </div>
+            <p>Plataforma innovadora de templates listos para personalizar, dirigida a diferentes tipos de negocios. Sistema modular escalable con arquitectura moderna y despliegue en VPS.</p>
+            <a href="#" class="project-link">Ver más →</a>
+        </div>
+
+        <div class="project-card">
+            <h3>Sistema de Autenticación</h3>
+            <div class="project-tags">
+                <span class="tag">Logto</span>
+                <span class="tag">Prisma</span>
+                <span class="tag">PostgreSQL</span>
+            </div>
+            <p>Implementación completa de autenticación empresarial con Logto, integración con base de datos PostgreSQL y gestión segura de usuarios y permisos en aplicaciones Next.js.</p>
+            <a href="#" class="project-link">Ver más →</a>
+        </div>
+
+        <div class="project-card">
+            <h3>App de Gestión de Inventario</h3>
+            <div class="project-tags">
+                <span class="tag">FlutterFlow</span>
+                <span class="tag">API REST</span>
+                <span class="tag">Mobile</span>
+            </div>
+            <p>Aplicación móvil multiplataforma (iOS/Android) para gestión de inventario offline con sincronización posterior. Diseñada para pequeños y medianos comercios cubanos.</p>
+            <a href="#" class="project-link">Ver más →</a>
+        </div>
+
+        <div class="project-card">
+            <h3>Soluciones Odoo</h3>
+            <div class="project-tags">
+                <span class="tag">Odoo 14-17</span>
+                <span class="tag">Python</span>
+                <span class="tag">ERP</span>
+            </div>
+            <p>Desarrollo de módulos personalizados, configuración de flujos de trabajo y consultoría en implementación de sistemas ERP Odoo para optimización de procesos empresariales.</p>
+            <a href="#" class="project-link">Ver más →</a>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Ponte en Contacto</h2>
+    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;">¿Tienes un proyecto en mente? Me encantaría escucharte.</p>
+    
+    <div class="contact-info">
+        <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <span>Email</span>
+            <a href="mailto:mariomillet2b@gmail.com">mariomillet2b@gmail.com</a>
+        </div>
+        <div class="contact-item">
+            <div class="contact-icon">💼</div>
+            <span>Ubicación</span>
+            <a href="#">Cuba</a>
+        </div>
+        <div class="contact-item">
+            <div class="contact-icon">🚀</div>
+            <span>Disponibilidad</span>
+            <a href="#">Disponible para proyectos</a>
+        </div>
+    </div>
+
+    <div style="margin-top: 3rem;">
+        <a href="mailto:mariomillet2b@gmail.com" class="btn btn-primary">Enviar mensaje</a>
+    </div>
 </section>
 
 <footer>
-    <p>© 2023 Mario A. Millet - Todos los derechos reservados</p>
+    <p>© 2024 Mario A. Millet - Todos los derechos reservados</p>
+    <p style="font-size: 0.9rem; margin-top: 1rem;">Diseñado y desarrollado con ❤️</p>
 </footer>
 
 </body>
