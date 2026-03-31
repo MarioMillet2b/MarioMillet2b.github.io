@@ -1,26 +1,102 @@
-<!DOCTYPE html>
-<html lang="es">
+# Mario A. Millet - Desarrollador Full Stack
 
-<body>
+Portfolio profesional de **Mario A. Millet**, especialista en desarrollo con Odoo, Next.js, Node.js y arquitecturas escalables.
 
-<header>
-    <h1>Hola, soy un Desarrollador Odoo</h1>
-</header>
+## 🚀 Características
 
-<section>
-    <h2>Acerca de Mí</h2>
-    <p>Mi nombre es Mario A. Millet y soy desarrollador especializado en Odoo. He estudiado Cibernética, lo que me ha permitido tener una sólida base en matemáticas y programación.</p>
-    
-    <h2>Experiencia en Odoo</h2>
-    <p>Trabajo con las versiones de Odoo 14, 15, 16 y 17, lo que me permite ofrecer soluciones eficientes y adaptadas a las necesidades de mis clientes. Estoy familiarizado con la personalización de módulos, desarrollo de nuevas características y la integración de Odoo con otras herramientas.</p>
+- ✨ Diseño moderno y responsive
+- 🎨 Tema oscuro profesional con animaciones suaves
+- 📱 Optimizado para móvil, tablet y desktop
+- ⚡ Carga rápida (sin dependencias externas)
+- 🔍 SEO friendly
+- 💼 Portfolio profesional con proyectos destacados
 
-    <h2>Contacto</h2>
-    <p>Puedes contactarme a través de mi correo electrónico: <a href="mailto:mariomillet2b@gmail.com">mariomillet2b@gmail.com</a></p>
-</section>
+## 📂 Estructura
 
-<footer>
-    <p>© 2023 Mario A. Millet - Todos los derechos reservados</p>
-</footer>
+```
+/
+├── index.html          # Página principal del portfolio
+├── README.md           # Este archivo
+└── .gitignore          # Archivos a ignorar en Git
+```
 
-</body>
-</html>
+## 🛠️ Tecnologías
+
+- **Frontend**: HTML5, CSS3 (Variables CSS, Grid, Flexbox)
+- **Stack profesional**: Odoo, Next.js, Node.js, PostgreSQL, Docker
+- **Versionamiento**: Git & GitHub
+
+## 📋 Secciones
+
+1. **Hero** - Presentación principal con CTA
+2. **Acerca de** - Información personal y habilidades
+3. **Experiencia** - Timeline de experiencia profesional
+4. **Proyectos** - Proyectos destacados:
+   - Hipersitio (Platform de templates)
+   - Sistema de Autenticación (Logto)
+   - App de Gestión de Inventario
+   - Soluciones Odoo personalizadas
+5. **Contacto** - Información de contacto
+
+## 🚀 Cómo usar
+
+### Localmente
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/[tu-usuario]/portfolio.git
+   cd portfolio
+   ```
+
+2. Abre `index.html` en tu navegador:
+   - Doble-click en el archivo
+   - O usa un servidor local (recomendado):
+     ```bash
+     # Con Python 3
+     python -m http.server 8000
+     
+     # Con Node.js
+     npx http-server
+     ```
+
+3. Visita `http://localhost:8000`
+
+### Deploy en GitHub Pages
+1. Ve a Settings del repositorio
+2. En "Pages" selecciona `main` branch
+3. Tu portfolio estará en `https://[tu-usuario].github.io/portfolio`
+
+## 📧 Contacto
+
+- **Email**: mariomillet2b@gmail.com
+- **Ubicación**: Cuba
+- **Disponibilidad**: Disponible para proyectos
+
+## 📄 Licencia
+
+© 2024 Mario A. Millet - Todos los derechos reservados
+
+## 🎨 Personalización
+
+El portfolio está 100% personalizable:
+
+- **Colores**: Modifica las variables CSS en la sección `:root` del `<style>`
+- **Contenido**: Edita el HTML para agregar o modificar secciones
+- **Proyectos**: Agrega más tarjetas de proyecto en la sección `#projects`
+
+### Variables CSS principales
+
+```css
+:root {
+    --primary: #00d9ff;           /* Color principal (cyan) */
+    --primary-dark: #0099cc;      /* Color primario oscuro */
+    --bg-dark: #0a0e27;           /* Fondo oscuro */
+    --bg-card: #1a1f3a;           /* Fondo de tarjetas */
+    --text-primary: #ffffff;      /* Texto principal */
+    --text-secondary: #b0b8c1;    /* Texto secundario */
+    --border: #2a3f5f;            /* Bordes */
+}
+```
+
+---
+
+**Desarrollado con ❤️ por Mario A. Millet**
